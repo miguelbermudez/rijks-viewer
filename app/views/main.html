@@ -1,0 +1,14 @@
+<div>
+    <ul infinite-scroll="loadMore()" infinite-scroll-disabled='busy' infinite-scroll-distance='2'  class="cbp-rfgrid">
+        <li ng-repeat="item in works">
+            <a
+                    href="{{item.formats[1]}}"
+                    style="{{set_background(item)}}"
+                    title="{{item.title}} by {{item.creator}}"
+                    >
+            </a>
+        </li>
+    </ul>
+    <div ng-show='busy'>Loading data...</div>
+</div>
+

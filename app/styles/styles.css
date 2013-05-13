@@ -1,0 +1,15 @@
+.cbp-rfgrid {
+  margin: 35px 0 0 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  width: 100%; }
+  .cbp-rfgrid li {
+    position: relative;
+    float: left; }
+    .cbp-rfgrid li a {
+      display: block;
+      width: 200px;
+      height: 200px;
+      cursor: pointer;
+      background-size: cover; }

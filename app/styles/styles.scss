@@ -1,0 +1,55 @@
+.cbp-rfgrid {
+  margin: 35px 0 0 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  width: 100%;
+
+  li {
+    position: relative;
+    float: left;
+    a {
+      display: block;
+      width: 200px;
+      height: 200px;
+      cursor: pointer;
+      background-size: cover;
+    }
+  }
+}
+
+@media screen and (max-width: 1190px) {
+  .cbp-rfgrid li{
+
+  }
+}
+
+@media screen and (max-width: 945px) {
+  .cbp-rfgrid li {
+
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .cbp-rfgrid li {
+
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .cbp-rfgrid li {
+
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .cbp-rfgrid li {
+
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .cbp-rfgrid li {
+
+  }
+}
