@@ -11,7 +11,8 @@ angular.module('rijksViewerApp')
       //var backgroundImage = 'background: url("' + path + '&200x200") no-repeat 0 0;';
       var backgroundImage = 'background: url("' + $scope.resizeImageUrl(path) + '") no-repeat 0 0;';
       var backgroundSize = 'background-size: cover;';
-      return backgroundImage + backgroundSize;
+      var backgroundPosition = 'background-position: 50%';
+      return backgroundImage + backgroundSize + backgroundPosition;
     }
 
 
@@ -38,7 +39,7 @@ angular.module('rijksViewerApp')
           records = data;
           angular.forEach(records, function(value) {
             $scope.works.push(value);
-            $scope.counter += 1;
+            //$scope.counter += 1;
           });
           $location.search({skip:$scope.counter});
           $scope.busy = false;
@@ -49,10 +50,18 @@ angular.module('rijksViewerApp')
     }
 
     $scope.resizeImageUrl = function(path) {
-      var host, port;
-      host = '127.0.0.1';
+      var host, port, parser, work_id;
+      host = 'localhost';
       port = 9393;
-      return $location.protocol() + "://" + host + ":" + port + "/resize/" + "200x1000" + "?url=" + path;
+      //parse url trick: https://gist.github.com/jlong/2428561
+      parser = document.createElement('a');
+      parser.href = path;
+      work_id = parser.search.match(/=(.+)$/)[1];
+
+
+      //return $location.protocol() + "://" + host + ":" + port + "/resize/" + "1000x2000" + "?url=" + path;
+      console.log("imageURL: ", $location.protocol() + "://" + host + ":" + port + "/image?id=" + work_id);
+      return $location.protocol() + "://" + host + ":" + port + "/image?id=" + work_id;
     }
 
     $scope.awesomeThings = [
