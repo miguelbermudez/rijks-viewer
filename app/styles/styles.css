@@ -1,25 +1,17 @@
-
 .cbp-rfgrid {
   margin: 35px 0 0 0;
   padding: 0;
   position: relative;
-  width: 3000px;
-  ul {
+  width: 3000px; }
+  .cbp-rfgrid ul {
     list-style: none;
-    width: 100%;
-
-    li {
+    width: 100%; }
+    .cbp-rfgrid ul li {
       position: relative;
       float: left;
-      background: url(/image/6.gif) 100px 400px no-repeat;
-      a {
+      background: url(/image/6.gif) 100px 400px no-repeat; }
+      .cbp-rfgrid ul li a {
         display: block;
         width: 320px;
         height: 1000px;
-        cursor: pointer;
-      }
-    }
-
-  }
-}
-
+        cursor: pointer; }
