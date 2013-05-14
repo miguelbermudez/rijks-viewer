@@ -1,5 +1,5 @@
 <div infinite-scroll="loadMore()" infinite-scroll-disabled='busy' infinite-scroll-distance='0'  class="cbp-rfgrid">
-    <ul>
+    <ul ng-init="loadMore()">
         <li ng-repeat="item in works">
             <a
                     href="{{item.formats[1]}}"

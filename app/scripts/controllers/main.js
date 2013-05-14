@@ -8,7 +8,8 @@ angular.module('rijksViewerApp')
 
     $scope.set_background = function (item) {
       var path = item.formats[0];
-      var backgroundImage = 'background: url("' + path + '&200x200") no-repeat 0 0;';
+      //var backgroundImage = 'background: url("' + path + '&200x200") no-repeat 0 0;';
+      var backgroundImage = 'background: url("' + $scope.resizeImageUrl(path) + '") no-repeat 0 0;';
       var backgroundSize = 'background-size: cover;';
       return backgroundImage + backgroundSize;
     }
@@ -45,6 +46,13 @@ angular.module('rijksViewerApp')
         error(function(data, status, headers, config) {
           console.error('Error fetching feed:', data);
         });
+    }
+
+    $scope.resizeImageUrl = function(path) {
+      var host, port;
+      host = '127.0.0.1';
+      port = 9393;
+      return $location.protocol() + "://" + host + ":" + port + "/resize/" + "200x1000" + "?url=" + path;
     }
 
     $scope.awesomeThings = [
