@@ -1,10 +1,9 @@
 .cbp-rfgrid {
   margin: 35px 0 0 0;
   padding: 0;
-  list-style: none;
   position: relative;
   width: 100%;
-
+  ul { list-style: none; }
   li {
     position: relative;
     float: left;
