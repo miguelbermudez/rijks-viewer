@@ -1,12 +1,15 @@
+/* line 1, /Users/miguelb/Documents/development/Web/rijks-viewer/app/styles/styles.scss */
 .cbp-rfgrid {
   margin: 35px 0 0 0;
   padding: 0;
   list-style: none;
   position: relative;
   width: 100%; }
+  /* line 8, /Users/miguelb/Documents/development/Web/rijks-viewer/app/styles/styles.scss */
   .cbp-rfgrid li {
     position: relative;
     float: left; }
+    /* line 11, /Users/miguelb/Documents/development/Web/rijks-viewer/app/styles/styles.scss */
     .cbp-rfgrid li a {
       display: block;
       width: 200px;
