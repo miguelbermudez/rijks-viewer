@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('djsreaderApp')
+angular.module('rijksViewerApp')
   .controller('MainCtrl', function ($scope, $http, $location, $routeParams) {
     $scope.works = [];
     $scope.busy = false;

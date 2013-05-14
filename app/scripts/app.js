@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('djsreaderApp', ['infinite-scroll'])
+angular.module('rijksViewerApp', ['infinite-scroll'])
   .config(function ($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(true);
     $routeProvider
