@@ -1,54 +1,124 @@
+@import 'bourbon/bourbon';
+
+
+
+@-webkit-keyframes workTileAnim {
+  0% {
+    -webkit-filter: grayscale(0) brightness(100%);
+  }
+  100% {
+    -webkit-filter: grayscale(100%) brightness(55%);
+  }
+}
+
 .cbp-rfgrid {
   margin: 35px 0 0 0;
   padding: 0;
   position: relative;
-  width: 100%;
-  ul { list-style: none; }
-  li {
-    position: relative;
-    float: left;
-    a {
-      display: block;
-      width: 200px;
-      height: 200px;
-      cursor: pointer;
-      background-size: cover;
+  width: 3000px;
+  ul {
+    list-style: none;
+    width: 100%;
+
+    li {
+      position: relative;
+      float: left;
+      background: url(/image/6.gif) 100px 400px no-repeat;
+      height: 1000px;
+      overflow: hidden;
+      &.deactive a {
+        //-webkit-animation-name: workTileAnim;
+        //-webkit-animation-duration: 2s;
+        //-webkit-animation-iteration-count: 1;
+        //-webkit-animation-direction: alternate;
+        //-webkit-animation-timing-function: ease-out;
+        //-webkit-animation-fill-mode: forwards;
+        //-webkit-animation-delay: 0s;
+        @include animation(workTileAnim 0.5s 1 alternate ease-in forwards 0);
+      }
+      &.active a {
+        @include animation(workTileAnim 1.5s 1 alternate ease-in reverse 0);
+        -webkit-filter:
+        //  grayscale(0)
+          saturate(146%);
+      }
+      a {
+        -webkit-transform: translate3d(0, 0, 0);
+        @include transition(all 0.5s  ease-in );
+
+        display: block;
+        width: 320px;
+        height: 1000px;
+        cursor: pointer;
+      }
+      div.id-card {
+        @include transition(all 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940));
+        @include box-sizing(border-box);
+       pointer-events: none;
+        position: absolute;
+        background: #e8e8e8;
+        height: 275px;
+        top: -275px;
+        padding: 20px;
+        width: 100%;
+        left: 0;
+        &.over {
+          top: 0;
+        }
+        h2 {
+          line-height: 1;
+          margin: 0 0 10px 0;
+        }
+        p { margin: 0;}
+
+      }
     }
   }
 }
 
-@media screen and (max-width: 1190px) {
-  .cbp-rfgrid li{
-
-  }
+.repeat-enter-setup {
+  @include transition(all 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) );
+  opacity:0;
+  position:relative;
 }
 
-@media screen and (max-width: 945px) {
-  .cbp-rfgrid li {
 
-  }
+.repeat-enter-setup.repeat-enter-start {
+  opacity:1;
 }
 
-@media screen and (max-width: 660px) {
-  .cbp-rfgrid li {
+.repeat-leave-setup {
+  @include transition(all 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) );
 
-  }
+  opacity:1;
+  position:relative;
+  left:0;
 }
 
-@media screen and (max-width: 660px) {
-  .cbp-rfgrid li {
-
-  }
+.repeat-leave-setup.repeat-leave-start {
+  opacity:0;
 }
 
-@media screen and (max-width: 400px) {
-  .cbp-rfgrid li {
-
-  }
+.repeat-show-setup,
+.repeat-hide-setup {
+  @include transition(all 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) );
 }
 
-@media screen and (max-width: 300px) {
-  .cbp-rfgrid li {
-
-  }
+.repeat-show-setup {
+  opacity:0;
+  top:-30px;
 }
+.repeat-show-start {
+  opacity:1;
+  top:0;
+}
+
+.repeat-hide-setup {
+  opacity:1;
+  top:0;
+}
+.repeat-hide-start {
+  opacity:0;
+  top:-30px;
+}
+
