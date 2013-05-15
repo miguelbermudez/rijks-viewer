@@ -58,9 +58,7 @@ angular.module('rijksViewerApp')
       parser.href = path;
       work_id = parser.search.match(/=(.+)$/)[1];
 
-
-      //return $location.protocol() + "://" + host + ":" + port + "/resize/" + "1000x2000" + "?url=" + path;
-      console.log("imageURL: ", $location.protocol() + "://" + host + ":" + port + "/image?id=" + work_id);
+      //console.log("imageURL: ", $location.protocol() + "://" + host + ":" + port + "/image?id=" + work_id);
       return $location.protocol() + "://" + host + ":" + port + "/image?id=" + work_id;
     }
 
