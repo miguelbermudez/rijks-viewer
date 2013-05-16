@@ -16,7 +16,7 @@ angular.module('rijksViewerApp')
       }
 
       if (end === undefined) {
-        end = "..."
+        end = '...';
       }
 
       if (input.length <= length || input.length - end.length <= length) {
