@@ -1,7 +1,9 @@
 'use strict';
 
-angular.module('rijksviewerApp')
-  .controller('DetailCtrl', function ($scope) {
+angular.module('rijksViewerApp')
+  .controller('DetailCtrl', function ($scope, $routeParams) {
+    $scope.work_id = $routeParams.id;
+
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
