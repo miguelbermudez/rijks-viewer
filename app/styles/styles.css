@@ -1,10 +1,11 @@
-@-webkit-keyframes workTileAnim {
+@-webkit-keyframes workActiveTileAnim {
   0% {
-    -webkit-filter: grayscale(0) brightness(100%); }
+    -webkit-filter: grayscale(100%) brightness(55%) saturate(100%); }
 
   100% {
-    -webkit-filter: grayscale(100%) brightness(55%); } }
+    -webkit-filter: grayscale(0) brightness(100%) saturate(150%); } }
 
+@-webkit-keyframes workDectiveTileAnim {}
 .cbp-rfgrid {
   margin: 35px 0 0 0;
   padding: 0;
@@ -20,27 +21,27 @@
       height: 1000px;
       overflow: hidden; }
       .cbp-rfgrid ul li.deactive a {
-        -webkit-animation: workTileAnim 0.5s 1 alternate ease-in forwards 0;
-        -moz-animation: workTileAnim 0.5s 1 alternate ease-in forwards 0;
-        animation: workTileAnim 0.5s 1 alternate ease-in forwards 0; }
+        -webkit-transform: scale(1); }
       .cbp-rfgrid ul li.active a {
-        -webkit-animation: workTileAnim 1.5s 1 alternate ease-in reverse 0;
-        -moz-animation: workTileAnim 1.5s 1 alternate ease-in reverse 0;
-        animation: workTileAnim 1.5s 1 alternate ease-in reverse 0;
-        -webkit-filter: saturate(146%); }
+        -webkit-animation: workActiveTileAnim 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s 1 alternate forwards;
+        -moz-animation: workActiveTileAnim 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s 1 alternate forwards;
+        animation: workActiveTileAnim 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s 1 alternate forwards;
+        -webkit-transform: scale(0.98); }
       .cbp-rfgrid ul li a {
         -webkit-transform: translate3d(0, 0, 0);
-        -webkit-transition: all 0.5s ease-in;
-        -moz-transition: all 0.5s ease-in;
-        transition: all 0.5s ease-in;
+        -webkit-transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        -moz-transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        -webkit-filter: grayscale(100%) brightness(35%);
         display: block;
         width: 320px;
         height: 1000px;
         cursor: pointer; }
       .cbp-rfgrid ul li div.id-card {
-        -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        -webkit-transform: translate3d(0, 0, 0);
+        -webkit-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        -moz-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
