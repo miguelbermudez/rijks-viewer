@@ -9,6 +9,10 @@ angular.module('rijksViewerApp', ['infinite-scroll'])
         controller: 'MainCtrl',
         reloadOnSearch: false
       })
+      .when('/:id', {
+        templateUrl: 'views/detail.html',
+        controller: 'DetailCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
