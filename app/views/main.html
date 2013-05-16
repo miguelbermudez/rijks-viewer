@@ -3,14 +3,15 @@
     <ul ng-init="loadMore()" style="width:{{(works.length+1)*320}}px;">
         <li ng-repeat="item in works" ng-animate="'repeat'" mb-work-tile>
             <a
-                    href="{{item.formats[1]}}"
+                    href="{{item.work_id}}"
                     style="{{set_background(item)}}"
                     title="{{item.title}} by {{item.creator}}"
                     class="works_tile"
+                    data-identifier="{{item.identifier}}"
                     >
             </a>
             <div class="id-card">
-                <h2>{{item.title}}</h2>
+                <h2>{{item.title | truncate:60}}</h2>
                 <p>{{item.creator}}</p>
                 <p class="date">{{item.date}}</p>
             </div>

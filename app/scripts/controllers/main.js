@@ -7,7 +7,7 @@ angular.module('rijksViewerApp')
     $scope.counter = 0;
 
     $scope.set_background = function (item) {
-      var path = item.formats[0];
+      var path = item.work_id;
       //var backgroundImage = 'background: url("' + path + '&200x200") no-repeat 0 0;';
       var backgroundImage = 'background: url("' + $scope.resizeImageUrl(path) + '") no-repeat 0 0;';
       var backgroundSize = 'background-size: cover;';
@@ -16,48 +16,52 @@ angular.module('rijksViewerApp')
     }
 
 
-    $scope.loadMore = function() {
+    $scope.loadMore = function () {
       if ($scope.busy) return;
       $scope.busy = true;
 
       var _url = "http://127.0.0.1:9393/paintings/?callback=JSON_CALLBACK";
       if ($scope.counter == 0 && $routeParams.skip) {
-        _url = "http://127.0.0.1:9393/paintings/?skip=" +$routeParams.skip + "&callback=JSON_CALLBACK";
+        _url = "http://127.0.0.1:9393/paintings/?skip=" + $routeParams.skip + "&callback=JSON_CALLBACK";
         $scope.counter = parseInt($routeParams.skip);
         console.log('routeaparams: ', $routeParams);
       }
 
       $http.jsonp(_url,
         {
-          cache: true,
+          cache:  true,
           params: {skip: $scope.counter }
         }).
-        success(function(data, status, headers, config) {
-          var records = null;
-          console.log("#",$scope.counter, data);
+        success(function (data, status, headers, config) {
+          var records = null, work_id, parser;
+          console.log("#", $scope.counter, data);
 
           records = data;
-          angular.forEach(records, function(value) {
+          angular.forEach(records, function (value) {
+            //get work_id from original image link
+            //parse url trick: https://gist.github.com/jlong/2428561
+            parser = document.createElement('a');
+            parser.href = value.formats[0];
+            work_id = parser.search.match(/=(.+)$/)[1];
+
+            //add work_id key to work
+            value['work_id'] = work_id
+
             $scope.works.push(value);
             //$scope.counter += 1;
           });
-          $location.search({skip:$scope.counter});
+          $location.search({skip: $scope.counter});
           $scope.busy = false;
         }).
-        error(function(data, status, headers, config) {
+        error(function (data, status, headers, config) {
           console.error('Error fetching feed:', data);
         });
     }
 
-    $scope.resizeImageUrl = function(path) {
-      var host, port, parser, work_id;
+    $scope.resizeImageUrl = function (work_id) {
+      var host, port;
       host = 'localhost';
       port = 9393;
-      //parse url trick: https://gist.github.com/jlong/2428561
-      parser = document.createElement('a');
-      parser.href = path;
-      work_id = parser.search.match(/=(.+)$/)[1];
-
       //console.log("imageURL: ", $location.protocol() + "://" + host + ":" + port + "/image?id=" + work_id);
       return $location.protocol() + "://" + host + ":" + port + "/image?id=" + work_id;
     }
