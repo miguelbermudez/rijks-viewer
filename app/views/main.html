@@ -3,7 +3,7 @@
     <ul ng-init="loadMore()" style="width:{{(works.length+1)*320}}px;">
         <li ng-repeat="item in works" ng-animate="'repeat'" mb-work-tile>
             <a
-                    href="{{item.work_id}}"
+                    href="/{{item.work_id | lowercase}}"
                     style="{{set_background(item)}}"
                     title="{{item.title}} by {{item.creator}}"
                     class="works_tile"
