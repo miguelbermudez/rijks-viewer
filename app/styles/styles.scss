@@ -23,7 +23,7 @@ $brightnessStart: 85%;
     li {
       position: relative;
       float: left;
-      height: 1000px;
+      height: 100vh;
       overflow: hidden;
       &.deactive a {
         //-webkit-animation-name: workTileAnim;
@@ -50,7 +50,7 @@ $brightnessStart: 85%;
 
         display: block;
         width: 320px;
-        height: 1000px;
+        height: 100vh;
         cursor: pointer;
       }
       div.id-card {
@@ -128,4 +128,30 @@ $brightnessStart: 85%;
   opacity: 0;
   top: -30px;
 }
+
+
+//Details Page
+#bgImage {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  position: relative;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    //height: 100vh;
+    z-index: -1;
+  }
+}
+
+#work-data {
+  h1 {
+    color: white;
+
+  }
+}
+
+
 
