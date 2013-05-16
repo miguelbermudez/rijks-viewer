@@ -1,21 +1,14 @@
 @import 'bourbon/bourbon';
 
+$brightnessStart: 85%;
+
 @-webkit-keyframes workActiveTileAnim {
   0% {
-    -webkit-filter: grayscale(100%) brightness(55%) saturate(100%);
+    -webkit-filter: grayscale(100%) brightness($brightnessStart) saturate(100%);
   }
   100% {
     -webkit-filter: grayscale(0) brightness(100%) saturate(150%);
   }
-}
-
-@-webkit-keyframes workDectiveTileAnim {
-//0% {
-//  -webkit-filter: grayscale(100%) brightness(55%) saturate(100%) blur(0);
-//}
-//100% {
-//  -webkit-filter: grayscale(100%) brightness(55%) saturate(100%) blur(3px);
-//}
 }
 
 .cbp-rfgrid {
@@ -30,7 +23,6 @@
     li {
       position: relative;
       float: left;
-      background: url(/image/6.gif) 100px 400px no-repeat;
       height: 1000px;
       overflow: hidden;
       &.deactive a {
@@ -42,19 +34,19 @@
         //-webkit-animation-fill-mode: forwards;
         //-webkit-animation-delay: 0s;
         //@include animation(workDectiveTileAnim 1.5s ease-in 0s 1 alternate forwards);
-        -webkit-transform: scale(1);
+        -webkit-transform: scale(1) translate3d(0,0,0);
       }
       &.active a {
         @include animation(workActiveTileAnim 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0s 1 alternate forwards);
         //-webkit-filter:
         //  grayscale(0)
         //  saturate(146%);
-        -webkit-transform: scale(.98);
+        -webkit-transform: scale(.98) translate3d(0,0,0);
       }
       a {
         -webkit-transform: translate3d(0, 0, 0);
         @include transition(all 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940));
-        -webkit-filter: grayscale(100%) brightness(35%);
+        -webkit-filter: grayscale(100%) brightness($brightnessStart);
 
         display: block;
         width: 320px;
@@ -74,7 +66,8 @@
         width: 100%;
         left: 0;
         &.over {
-          top: 0;
+          //top: 0;
+          -webkit-transform: translate3d(0,100%,0);
         }
         h2 {
           line-height: 1;
