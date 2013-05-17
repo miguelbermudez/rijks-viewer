@@ -4,6 +4,7 @@ angular.module('rijksViewerApp')
   .controller('DetailCtrl', function ($scope, $routeParams, $location, $http) {
     $scope.work_id = $routeParams.id;
     $scope.work = {};
+    $scope.detailFields = ['title', 'subject', 'description', 'identifier', 'date', 'creator', 'subject'];
     var workQuery = 'http://localhost:9393/painting/' + $scope.work_id + '?callback=JSON_CALLBACK';
 
 
@@ -24,6 +25,14 @@ angular.module('rijksViewerApp')
       var backgroundImage = 'background-image: url("' + url + '");';
       return backgroundImage;
     };
+
+    $scope.cleanCreatorName = function(creatorStr) {
+      var name;
+      if (creatorStr){
+        name = creatorStr.match(/\w+\:\s+(\w+.*)/)[1];
+        return name.split(",").reverse().join(" ");
+      }
+    }
 
     $scope.fullImageUrl = $scope.imageUrl($scope.work_id, true);
 
