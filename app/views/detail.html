@@ -1,15 +1,23 @@
 <div id="bgImage">
-    <img src="{{fullImageUrl}}" alt=""/>
+    <img ng-src="{{fullImageUrl}}" alt=""/>
 </div>
 
 <div id="content">
     <div id="work-data">
-        <h1 class="title">hello, {{work.title}}</h1>
+        <h1 class="title">{{work.title | uppercase}}</h1>
+        <div class="row-fluid">
+            <dl>
+                <dt class="artist span3">{{ cleanCreatorName(work.creator) }}<br />{{work.date}}</dt>
+                <dd class="description span6">{{work.description}} </dd>
+            </dl>
+        </div>
+        <div class="row-fluid">
+            <dl>
+                <dt class="contributor span3">Contributor</dt>
+                <dd class="contributor span6">{{work.contributor}}</dd>
+            </dl>
+        </div>
 
     </div>
-
-    <p>This is the detail view.</p>
-    <p>For work {{work_id}}</p>
-    <p>{{fullImageUrl}}</p><br />
 </div>
 

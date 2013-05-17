@@ -146,12 +146,27 @@ $brightnessStart: 85%;
   }
 }
 
-#work-data {
-  h1 {
-    color: white;
+#content {
 
+  #work-data {
+    h1 {
+      color: white;
+      letter-spacing: 2px;
+    }
+    div.row-fluid {
+      border-left: 5px solid darkred;
+    }
+    dl {
+      margin: 0;
+      dt {
+      }
+      dd {
+        padding-bottom: 1em;
+      }
+    }
   }
 }
+
 
 
 
