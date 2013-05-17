@@ -2,19 +2,35 @@
     <img ng-src="{{fullImageUrl}}" alt=""/>
 </div>
 
-<div id="content">
+<div id="content" style="border-color: {{randomColor.darken(40).brighten(5).hex()}}">
     <div id="work-data">
         <h1 class="title">{{work.title | uppercase}}</h1>
         <div class="row-fluid">
-            <dl>
-                <dt class="artist span3">{{ cleanCreatorName(work.creator) }}<br />{{work.date}}</dt>
+            <div class="expandBar" ng-class="{open:artistDescr}" ng-style="colorPicker()"></div>
+            <dl ng-init="artistDescr=false">
+                <dt class="artist span3" ng-click="termToggle()">{{ cleanCreatorName(work.creator) }}<br />{{work.date}}</dt>
                 <dd class="description span6">{{work.description}} </dd>
             </dl>
         </div>
         <div class="row-fluid">
-            <dl>
-                <dt class="contributor span3">Contributor</dt>
+            <div class="expandBar" ng-class="{open:term2}" ng-style="colorPicker(3)"></div>
+            <dl ng-init="term2 = false">
+                <dt class="contributor span3" ng-click="termToggle(term2)">Contributor</dt>
                 <dd class="contributor span6">{{work.contributor}}</dd>
+            </dl>
+        </div>
+        <div class="row-fluid">
+            <div class="expandBar" ng-class="{open:term}" ng-style="colorPicker(5)"></div>
+            <dl ng-init="term=false">
+                <dt class="artist span3" ng-click="termToggle(term)">{{ cleanCreatorName(work.creator) }}<br />{{work.date}}</dt>
+                <dd class="description span6" ng-class="{open:term}">{{work.description}} </dd>
+            </dl>
+        </div>
+        <div class="row-fluid">
+            <div class="expandBar" ng-class="{open:term4}" ng-style="colorPicker(7)"></div>
+            <dl ng-init="term4=false">
+                <dt class="artist span3" ng-click="termToggle(term4)">{{ cleanCreatorName(work.creator) }}<br />{{work.date}}</dt>
+                <dd class="description span6">{{work.description}} </dd>
             </dl>
         </div>
 
