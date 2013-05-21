@@ -2,6 +2,11 @@
 
 $brightnessStart: 55%;
 
+
+@mixin flex($value) {
+  @include prefixer(flex, $value, webkit moz spec);
+}
+
 @-webkit-keyframes workActiveTileAnim {
   0% {
     -webkit-filter: grayscale(100%) brightness($brightnessStart) saturate(100%);
@@ -146,12 +151,52 @@ $brightnessStart: 55%;
   }
 }
 
-#work-data {
-  h1 {
-    color: white;
+#content {
+  border-top: 5px solid;
+  padding-top: 2em;
 
+  #work-data {
+    color: white;
+    h1 {
+      color: white;
+      letter-spacing: 2px;
+      margin-bottom: 1em;
+      width: 65vw;
+      line-height: 1.45;
+      margin-left: 40px;
+    }
+    div.row-fluid {
+      position: relative;
+
+      div.expandBar {
+        @include transition(all 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940));
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 100%;
+        z-index:1;
+        &.open { width: 100%; }
+
+      }
+      min-height: 100px;
+    }
+    dl {
+      position: relative;
+      z-index: 10;
+      margin-left: 40px;
+      dt {
+      }
+      dd {
+        @include transition(all 0.5s linear);
+        padding-bottom: 3em;
+        opacity: 0;
+        &.open { opacity: 1; }
+      }
+    }
   }
 }
+
 
 
 
