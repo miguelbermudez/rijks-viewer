@@ -2,9 +2,11 @@
 
 angular.module('rijksViewerApp')
   .controller('DetailCtrl', function ($scope, $routeParams, $location, $http) {
+    //var apiUrl = 'http://dev.miguelbermudez.com:9292';
+    var apiUrl = 'http://localhost:3000';
     $scope.work_id = $routeParams.id;
     $scope.work = {};
-    var workQuery = 'http://localhost:9393/painting/' + $scope.work_id + '?callback=JSON_CALLBACK';
+    var workQuery = apiUrl + '/painting/' + $scope.work_id + '?callback=JSON_CALLBACK';
 
 
     $scope.imageUrl = function (work_id, full) {
@@ -12,7 +14,7 @@ angular.module('rijksViewerApp')
       full || (full = false);
       host = 'localhost';
       port = 9393;
-      url = $location.protocol() + '://' + host + ':' + port + '/image?id=' + work_id;
+      url = apiUrl + '/image?id=' + work_id;
       if (full) {
         return url + '&full=true';
       }

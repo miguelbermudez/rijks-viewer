@@ -2,6 +2,8 @@
 
 angular.module('rijksViewerApp')
   .controller('MainCtrl', function ($scope, $http, $location, $routeParams) {
+    //var apiUrl = 'http://dev.miguelbermudez.com:9292';
+    var apiUrl = 'http://localhost:3000';
     $scope.works = [];
     $scope.busy = false;
     $scope.counter = 0;
@@ -20,9 +22,9 @@ angular.module('rijksViewerApp')
       if ($scope.busy) {return;}
       $scope.busy = true;
 
-      var _url = 'http://127.0.0.1:9393/paintings/?callback=JSON_CALLBACK';
+      var _url = apiUrl + '/paintings/?callback=JSON_CALLBACK';
       if ($scope.counter === 0 && $routeParams.skip) {
-        _url = 'http://127.0.0.1:9393/paintings/?skip=' + $routeParams.skip + '&callback=JSON_CALLBACK';
+        _url = apiUrl + '/paintings/?skip=' + $routeParams.skip + '&callback=JSON_CALLBACK';
         $scope.counter = parseInt($routeParams.skip, 10);
         console.log('routeaparams: ', $routeParams);
       }
@@ -63,7 +65,8 @@ angular.module('rijksViewerApp')
       host = 'localhost';
       port = 9393;
       //console.log("imageURL: ", $location.protocol() + "://" + host + ":" + port + "/image?id=" + work_id);
-      return $location.protocol() + '://' + host + ':' + port + '/image?id=' + work_id;
+      //return $location.protocol() + '://' + host + ':' + port + '/image?id=' + work_id;
+      return apiUrl + '/image?id=' + work_id;
     };
 
     $scope.awesomeThings = [
