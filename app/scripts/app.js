@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('rijksViewerApp', ['infinite-scroll'])
-  .config(function ($locationProvider, $routeProvider) {
+angular.module('rijksViewerApp', [])
+  .config(function ($locationProvider, $routeProvider, $logProvider) {
     //$locationProvider.html5Mode(true);
+    $logProvider.debugEnabled(true);
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
