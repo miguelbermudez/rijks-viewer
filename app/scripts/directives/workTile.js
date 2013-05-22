@@ -5,7 +5,7 @@ angular.module('rijksViewerApp')
     return {
       //template: '<div></div>',
       restrict: 'A',
-      link: function postLink(scope, element, attrs) {
+      link: function postLink(scope, element) {
         var idCard, parentUl;
         idCard = angular.element(element.children()[1]);
         parentUl = angular.element(element.parent());

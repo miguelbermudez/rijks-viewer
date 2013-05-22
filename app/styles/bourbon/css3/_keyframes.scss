@@ -20,6 +20,13 @@
       @content;
     }
   }
+  @if $original-prefix-for-microsoft {
+    @include disable-prefix-for-all();
+    $prefix-for-microsoft: true;
+    @-ms-keyframes #{$name} {
+      @content;
+    }
+  }
   @if $original-prefix-for-opera {
     @include disable-prefix-for-all();
     $prefix-for-opera: true;
@@ -28,6 +35,7 @@
     }
   }
   @if $original-prefix-for-spec {
+    $prefix-for-spec:     true !default;
     @include disable-prefix-for-all();
     $prefix-for-spec: true;
     @keyframes #{$name} {
