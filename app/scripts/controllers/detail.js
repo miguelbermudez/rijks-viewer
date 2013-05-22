@@ -3,7 +3,7 @@
 angular.module('rijksViewerApp')
   .controller('DetailCtrl', function ($scope, $routeParams, $location, $http) {
     //var apiUrl = 'http://dev.miguelbermudez.com:9292';
-    var apiUrl = 'http://localhost:3000';
+    var apiUrl = 'http://dev.miguelbermudez.com:3000';
     $scope.work_id = $routeParams.id;
     $scope.work = {};
     $scope.detailFields = ['title', 'subject', 'description', 'identifier', 'date', 'creator', 'subject'];

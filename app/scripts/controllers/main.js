@@ -3,7 +3,7 @@
 angular.module('rijksViewerApp')
   .controller('MainCtrl', function ($scope, $http, $location, $routeParams) {
     //var apiUrl = 'http://dev.miguelbermudez.com:9292';
-    var apiUrl = 'http://localhost:3000';
+    var apiUrl = 'http://dev.miguelbermudez.com:3000';
     $scope.works = [];
     $scope.busy = false;
     $scope.counter = 0;
