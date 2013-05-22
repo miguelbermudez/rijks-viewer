@@ -3,7 +3,7 @@
 describe('Filter: truncate', function () {
 
   // load the filter's module
-  beforeEach(module('rijksviewerApp'));
+  beforeEach(module('rijksViewerApp'));
 
   // initialize a new instance of the filter before each test
   var truncate;

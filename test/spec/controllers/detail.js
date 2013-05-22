@@ -3,16 +3,19 @@
 describe('Controller: DetailCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('rijksviewerApp'));
+  beforeEach(module('rijksViewerApp'));
 
   var DetailCtrl,
+    api,
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, _api_) {
     scope = $rootScope.$new();
+    api = _api_;
     DetailCtrl = $controller('DetailCtrl', {
-      $scope: scope
+      $scope: scope,
+      Api: api
     });
   }));
 

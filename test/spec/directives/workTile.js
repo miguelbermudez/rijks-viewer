@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Directive: workTile', function () {
-  beforeEach(module('rijksviewerApp'));
+  beforeEach(module('rijksViewerApp'));
 
   var element;
 
