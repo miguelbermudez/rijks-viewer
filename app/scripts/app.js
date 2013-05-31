@@ -5,6 +5,11 @@ angular.module('rijksViewerApp', [])
     //$locationProvider.html5Mode(true);
     $logProvider.debugEnabled(true);
     $routeProvider
+      .when('/skip/:skip', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+        //reloadOnSearch: false
+      })
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
