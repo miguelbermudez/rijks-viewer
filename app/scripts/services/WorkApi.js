@@ -19,6 +19,7 @@ angular.module('rijksViewerApp')
     };
 
     // Public API here
+    // TODO: make all of this an  Angular Resource
     return {
       mode: _mode,
       url: getAPIUrl(),
