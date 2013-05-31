@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('rijksViewerApp')
-  .controller('DetailCtrl', function ($scope, $routeParams, $location, $http, $log, Api) {
+  .controller('DetailCtrl', function ($scope, $routeParams, $location, $http, $log, Api, work) {
 
-    $scope.work_id = $routeParams.id;
-    $scope.work = {};
+//    $scope.work_id = $routeParams.id;
+    $scope.work = work[0];
     $scope.detailFields = ['title', 'subject', 'description', 'identifier', 'date', 'creator', 'subject'];
 
     //setup colors
@@ -13,11 +13,11 @@ angular.module('rijksViewerApp')
     $scope.randomColor = new chroma.Color(randomColorName);
 
     //get work data
-    Api.getPainting(function(data) {
-      $scope.work = data[0];
-    }, $scope.work_id);
+//    Api.getPainting(function(data) {
+//      $scope.work = data[0];
+//    }, $scope.work_id);
 
-    $scope.fullImageUrl = Api.getImageUrl($scope.work_id, true);
+    $scope.fullImageUrl = Api.getImageUrl($scope.work['work_id'], true);
 
     $scope.getBgImgObj = function (url) {
       console.log('gettinga bg image: ', url);

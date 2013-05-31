@@ -12,7 +12,12 @@ angular.module('rijksViewerApp', [])
       })
       .when('/detail/:id', {
         templateUrl: 'views/detail.html',
-        controller: 'DetailCtrl'
+        controller: 'DetailCtrl',
+        resolve: {
+           work: function(WorkLoader) {
+             return WorkLoader();
+           }
+        }
       })
       .otherwise({
         redirectTo: '/'
