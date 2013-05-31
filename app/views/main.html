@@ -1,21 +1,7 @@
 <!--<div infinite-scroll="loadMore()" infinite-scroll-disabled='busy' infinite-scroll-distance='0'  class="cbp-rfgrid">-->
 <div ng-init="loadMore()" class="cbp-rfgrid">
     <ul ng-init="loadMore()" style="width:{{(works.length+1)*320}}px;">
-        <li ng-repeat="item in works" ng-animate="'repeat'" mb-work-tile>
-            <a
-                    href="/#/detail/{{item.work_id | lowercase}}"
-                    style="{{set_background(item)}}"
-                    title="{{item.title}} by {{item.creator}}"
-                    class="works_tile"
-                    data-identifier="{{item.identifier}}"
-                    >
-            </a>
-            <div class="id-card">
-                <h2>{{item.title | truncate:60}}</h2>
-                <p>{{item.creator}}</p>
-                <p class="date">{{item.date}}</p>
-            </div>
-        </li>
+        <mb-worktile ng-repeat="i in works" ng-animate="'repeat'" workitem="i"></mb-worktile>
     </ul>
     <div ng-show='busy'>Loading data...</div>
 </div>
