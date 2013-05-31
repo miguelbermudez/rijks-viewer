@@ -20,10 +20,13 @@ angular.module('rijksViewerApp')
       },
       link: function postLink(scope, element) {
         var idCard, parentUl, anchorImage;
+
+        console.log('image false ...');
+        scope.loaded = false;
+
         idCard = angular.element(element.children()[1]);
         parentUl = angular.element(element.parent());
         anchorImage = angular.element(element.find('a'));
-        console.log(anchorImage.css('background'));
         element.bind('mouseover', function() {
           parentUl.children().addClass('deactive');
           idCard.parent().addClass('active').toggleClass('deactive');
@@ -36,13 +39,26 @@ angular.module('rijksViewerApp')
         });
       },
       controller: function($scope, $element, $attrs, $location, Api) {
+        var imgUrl = "";
+        var imageRef;
+
+        imgUrl = Api.getImageUrl($scope.workitem.work_id);
+        imageRef = angular.element('<img>').attr('src', imgUrl);
+        imageRef[0].onload = function() {
+          console.log('image loaded ...');
+
+        };
+
         $scope.set_background = function (item) {
           var backgroundImage, backgroundSize, backgroundPosition;
-
-          backgroundImage = 'background: url("' + Api.getImageUrl(item.work_id) + '") no-repeat 0 0;';
+          backgroundImage = 'background: url("' + imgUrl + '") no-repeat 0 0;';
           backgroundSize = 'background-size: cover;';
           backgroundPosition = 'background-position: 50%';
           return backgroundImage + backgroundSize + backgroundPosition;
+        };
+
+        $scope.doReveal = function() {
+
         };
       }
     };

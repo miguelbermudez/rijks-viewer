@@ -26,12 +26,18 @@ $brightnessStart: 45%;
     width: 100%;
     overflow: hidden;
     background: black;
+    position: relative;
+    @include perspective(800px);
 
     li {
       position: relative;
       float: left;
       height: 100vh;
       overflow: hidden;
+
+      @include transform-style(preserve-3d);
+      @include transition(transform 1s cubic-bezier(0.250, 0.460, 0.450, 0.940));
+
       &.deactive a {
         //-webkit-animation-name: workTileAnim;
         //-webkit-animation-duration: 2s;
@@ -41,19 +47,24 @@ $brightnessStart: 45%;
         //-webkit-animation-fill-mode: forwards;
         //-webkit-animation-delay: 0s;
         //@include animation(workDectiveTileAnim 1.5s ease-in 0s 1 alternate forwards);
-        -webkit-transform: scale(1) translate3d(0,0,0);
+        -webkit-transform: scale(1) translate3d(0,0,0) rotateY(180deg);
+
       }
       &.active a {
         @include animation(workActiveTileAnim 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0s 1 alternate forwards);
         //-webkit-filter:
         //  grayscale(0)
         //  saturate(146%);
-        -webkit-transform: scale(.98) translate3d(0,0,0);
+        -webkit-transform: scale(.98) translate3d(0,0,0) rotateY(0);
       }
       a {
+        @include transition(all 1.25s cubic-bezier(0.250, 0.460, 0.450, 0.940));
+        @include prefixer(backface-visibility, hidden, webkit spec);
+
         -webkit-transform: translate3d(0, 0, 0);
-        @include transition(all 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940));
         -webkit-filter: grayscale(100%) opacity($brightnessStart);
+
+
 
         display: block;
         width: 320px;
@@ -87,6 +98,16 @@ $brightnessStart: 45%;
       }
     }
   }
+}
+
+.reveal {
+  @include transform(rotateY(180deg));
+}
+.reveal-front {
+}
+
+.reveal-back {
+
 }
 
 .repeat-enter-setup {
