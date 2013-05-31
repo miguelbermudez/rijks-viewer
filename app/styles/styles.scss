@@ -1,6 +1,6 @@
 @import 'bourbon/bourbon';
 
-$brightnessStart: 55%;
+$brightnessStart: 45%;
 
 
 @mixin flex($value) {
@@ -9,10 +9,10 @@ $brightnessStart: 55%;
 
 @-webkit-keyframes workActiveTileAnim {
   0% {
-    -webkit-filter: grayscale(100%) brightness($brightnessStart) saturate(100%);
+    -webkit-filter: grayscale(100%) opacity($brightnessStart) saturate(100%);
   }
   100% {
-    -webkit-filter: grayscale(0) brightness(100%) saturate(150%);
+    -webkit-filter: grayscale(0) opacity(100%) saturate(150%);
   }
 }
 
@@ -24,6 +24,8 @@ $brightnessStart: 55%;
   ul {
     list-style: none;
     width: 100%;
+    overflow: hidden;
+    background: black;
 
     li {
       position: relative;
@@ -51,7 +53,7 @@ $brightnessStart: 55%;
       a {
         -webkit-transform: translate3d(0, 0, 0);
         @include transition(all 0.25s cubic-bezier(0.250, 0.460, 0.450, 0.940));
-        -webkit-filter: grayscale(100%) brightness($brightnessStart);
+        -webkit-filter: grayscale(100%) opacity($brightnessStart);
 
         display: block;
         width: 320px;
